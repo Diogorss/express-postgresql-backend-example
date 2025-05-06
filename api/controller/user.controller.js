@@ -1,6 +1,8 @@
 import bcrypt from 'bcrypt';    
-import User from '../models/User.js'
+import db from '../models/index.js'
 import jwt from 'jsonwebtoken';
+
+
 
 const register = async (req, res) => {
     console.log("Registering user", req.body);
@@ -13,7 +15,7 @@ const register = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, salt);
     
     try {
-        const savedUser = await User.create({
+        const savedUser = await db.users.create({
             username,
             password: hashedPassword
         });
@@ -39,7 +41,7 @@ const login = async (req, res) => {
     const { username, password } = req.body;
 
     try {
-        const user = await User.findOne ({username}).select('+password');
+        const user = await db.users.findOne ({username}).select('+password');
 
         if(!user){
             console.error("User not found:", username);
