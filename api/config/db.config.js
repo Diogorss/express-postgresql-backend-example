@@ -14,7 +14,7 @@ const dbConfig = {
         acquire: 3000,
         idle: 0,
         evict: 8000,
-    }
+    },
 };
 
-export default dbConfig;
+export default dbConfig; 

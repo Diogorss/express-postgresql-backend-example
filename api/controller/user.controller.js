@@ -24,7 +24,8 @@ const register = async (req, res) => {
         return res.status(200).json({message: 'User registered successfully'})
     } catch (error) {
         console.error('Error saving user', error);
-        return res.status(500).json({message: 'Error saving user: ${error}'});
+        return res.status(500).json({message: `Error saving user: ${error}`});
+
     }
 
 
@@ -41,7 +42,7 @@ const login = async (req, res) => {
     const { username, password } = req.body;
 
     try {
-        const user = await db.users.findOne ({username}).select('+password');
+        const user = await db.users.findOne({ where: { username } });
 
         if(!user){
             console.error("User not found:", username);

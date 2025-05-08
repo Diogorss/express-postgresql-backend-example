@@ -4,10 +4,10 @@ import User from  "./User.js";
 
 
 
-
+console.log("dbConfig", dbConfig);
 const sequelize = new Sequelize(
     dbConfig.database,
-    dbConfig.username,
+    dbConfig.user,
     dbConfig.password,
     {
         host: dbConfig.host,
@@ -28,6 +28,6 @@ const db = {};
 db.Sequelize = Sequelize;   
 db.sequelize = sequelize;
 
-db.User = User(sequelize, Sequelize);
+db.users = User(sequelize, Sequelize); 
 
 export default db;
