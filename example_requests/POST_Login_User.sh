@@ -1,5 +1,5 @@
 curl --request POST \
-  --url 'http://localhost:3000/user/login' \
+  --url 'https://express-postgresql-backend-example-khaki.vercel.app/user/login' \
   --header 'Content-Type: application/json' \
   --data '{
     "username": "newuser",
