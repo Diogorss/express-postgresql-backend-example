@@ -14,6 +14,12 @@ const sequelize = new Sequelize(
         dialect: dbConfig.dialect,
         port: dbConfig.port,
         dialectmodule: pg,
+        dialectOptions: {
+            ssl: {
+                require: true,
+                rejectUnauthorized: false
+            }
+        },
         pool: {
             max: dbConfig.pool.max,
             min: dbConfig.pool.min,
